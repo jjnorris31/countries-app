@@ -1,3 +1,4 @@
+import { CountryService } from './../../services/country.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ByCountryComponent implements OnInit {
 
-  constructor() { }
+  public term: string = "";
+
+  constructor(private countryService: CountryService) { }
 
   ngOnInit(): void {
+  }
+
+  public handleSubmit() {
+    console.log(this.term);
+    this.countryService.searchCountry(this.term).subscribe((response) => {
+      console.log(response);
+    });
   }
 
 }
