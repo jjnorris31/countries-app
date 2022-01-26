@@ -1,1 +1,9 @@
-<p>country-input works!</p>
+<form autocomplete="off" 
+      ngSubmit)="handleSubmit()">
+    <input type="text"
+           class="form-control"
+           placeholder="Write a country"
+           [(ngModel)]="term"
+           (input)="keyPressed()"
+           name="term">
+</form>
