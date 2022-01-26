@@ -2,47 +2,20 @@
 <hr>
 <div class="row">
     <div class="col">
-        <form autocomplete="off" (ngSubmit)="handleSubmit()">
-            <input type="text"
-                   class="form-control"
-                   placeholder="Write a country"
-                   [(ngModel)]="term"
-                   name="term">
-        </form>
+        <app-country-input (onEnter)="handleSubmit($event)"></app-country-input>
     </div>
 </div>
 
 
 <hr>
 
-<div class="alert alert-danger">
+<div class="alert alert-danger" *ngIf="hasError">
     We found nothing!
 </div>
 
 
-<div class="row">
+<div class="row" *ngIf="!hasError">
     <div class="col">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Flag</th>
-                    <th>Name</th>
-                    <th>Population</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Flag</td>
-                    <td>Flag</td>
-                    <td>Flag</td>
-                    <td>
-                        <a href="/pais/cri">View detail</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <app-country-table [countries]="countries"></app-country-table>
     </div>
 </div>

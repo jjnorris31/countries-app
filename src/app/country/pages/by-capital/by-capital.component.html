@@ -1,1 +1,21 @@
-<p>by-capital works!</p>
+<h2>By capital</h2>
+<hr>
+<div class="row">
+    <div class="col">
+        <app-country-input (onEnter)="handleSubmit($event)"></app-country-input>
+    </div>
+</div>
+
+
+<hr>
+
+<div class="alert alert-danger" *ngIf="hasError">
+    We found nothing!
+</div>
+
+
+<div class="row" *ngIf="!hasError">
+    <div class="col">
+        <app-country-table [countries]="countries"></app-country-table>
+    </div>
+</div>

@@ -5,7 +5,9 @@ import { ByCapitalComponent } from './pages/by-capital/by-capital.component';
 import { ViewCountryComponent } from './pages/view-country/view-country.component';
 import { ByRegionComponent } from './pages/by-region/by-region.component';
 import { FormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import { CountryTableComponent } from './components/country-table/country-table.component';
+import { CountryInputComponent } from './components/country-input/country-input.component'
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import {HttpClientModule} from '@angular/common/http'
     ByCountryComponent,
     ByCapitalComponent,
     ViewCountryComponent,
-    ByRegionComponent
+    ByRegionComponent,
+    CountryTableComponent,
+    CountryInputComponent
   ],
   exports: [
     ByCountryComponent,

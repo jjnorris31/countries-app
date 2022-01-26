@@ -6,15 +6,15 @@ import { Country } from "../interfaces/country.interface";
 @Injectable({
     providedIn: 'root'
 })
-export class CountryService {
+export class CapitalService {
     private url: string = "https://restcountries.com/v3.1"
 
     constructor(private httpClient: HttpClient) {
 
     }
 
-    public searchCountry(countryName: string): Observable<Country[]> {
-        const url = `${this.url}/name/${countryName}`
+    public searchCapital(capitalName: string): Observable<Country[]> {
+        const url = `${this.url}/capital/${capitalName}`
         return this.httpClient.get<Country[]>(url);
     }
 
