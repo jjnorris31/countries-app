@@ -15,6 +15,7 @@ export class CountryInputComponent implements OnInit {
 
   public term: string = "";
 
+  // subject is an observable that allows to be multicasted to many Observers
   public debounced: Subject<string> = new Subject();
 
   constructor() { }
