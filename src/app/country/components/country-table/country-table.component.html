@@ -15,7 +15,7 @@
             <td>{{country.capital + ', ' + country.name.common}}</td>
             <td>{{country.population}}</td>
             <td>
-                <a href="/pais/cri">View detail</a>
+                <a [routerLink]="'/country/' + country.cca2">View detail</a>
             </td>
         </tr>
     </tbody>
