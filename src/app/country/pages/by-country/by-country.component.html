@@ -2,9 +2,19 @@
 <hr>
 <div class="row">
     <div class="col">
-        <app-country-input (onEnter)="handleSubmit($event)"></app-country-input>
+        <app-country-input (onEnter)="handleSubmit($event)" 
+                           (onDebounce)="suggestions($event)"></app-country-input>
     </div>
 </div>
+
+<ul *ngIf="showSuggested">
+    <li class="list-group-item list-group-item-action"
+    [routerLink]="['/country', suggestedCountry.cca2]"
+    *ngFor="let suggestedCountry of suggestedCountries"
+    style="cursor: pointer">
+    {{suggestedCountry.name.common}}
+    </li>
+</ul>
 
 
 <hr>
@@ -14,7 +24,7 @@
 </div>
 
 
-<div class="row" *ngIf="!hasError">
+<div class="row" *ngIf="countries.length > 0">
     <div class="col">
         <app-country-table [countries]="countries"></app-country-table>
     </div>
