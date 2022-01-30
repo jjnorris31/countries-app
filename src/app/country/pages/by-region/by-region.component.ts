@@ -1,3 +1,5 @@
+import { CountryService } from './../../services/country.service';
+import { Country } from './../../interfaces/country.interface';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,16 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ByRegionComponent implements OnInit {
 
-  public regions: string[] = ['EU', 'EFTA', 'CARICOM', 'PA', 'AU', 'USAN', 'EEU', 'AL', 'ASEAN', 'CAIS', 'CEFTA', 'NAFTA', 'SAARC'];
+  public regions: string[] = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
   public activeRegion: string = '';
+  public countries: Country[] = [];
 
-  constructor() { }
+  constructor(private countryService: CountryService) { }
 
   ngOnInit(): void {
+    this.countryService.searchByRegion(this.activeRegion).subscribe((countries: Country[]) => {
+      this.countries = countries;
+    }, error => {
+      console.log(error);
+    });
   }
 
   public setActiveRegion(region: string) {
-    this.activeRegion = region;
+    if (region !== this.activeRegion) {
+      this.activeRegion = region;
+      this.countryService
+        .searchByRegion(this.activeRegion)
+        .subscribe((countries: Country[]) => {
+          this.countries = countries;
+        }, error => {
+          console.log(error);
+      });
+    }
   }
 
 }
